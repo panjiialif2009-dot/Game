@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alif Yusuf | Game Hub</title>
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <!-- Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #6366f1;
+            --accent: #ec4899;
+            --bg: #030712;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; transition: all 0.3s ease; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: radial-gradient(circle at top right, #1e1b4b, #030712);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+        }
+
+        /* Animasi muncul */
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .page { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1); display: none; }
+        .page.active { display: block; }
+
+        /* Card Modern */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 40px;
+            padding: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Profile & Socials */
+        .profile-img { width: 130px; height: 130px; border-radius: 30px; margin: 0 auto 20px; border: 4px solid var(--primary); object-fit: cover; box-shadow: 0 0 20px rgba(99, 102, 241, 0.4); }
+        .socials { display: flex; justify-content: center; gap: 20px; margin-bottom: 30px; }
+        .social-link { font-size: 24px; color: #94a3b8; }
+        .social-link:hover { color: var(--accent); transform: scale(1.2); }
+
+        /* Tombol Game */
+        .btn-game {
+            width: 100%;
+            padding: 18px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-game:hover { background: var(--primary); border-color: transparent; box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
+
+        .back-btn { background: transparent; border: 1px solid #475569; padding: 10px 20px; border-radius: 12px; cursor: pointer; color: #94a3b8; margin-top: 20px; }
+        .back-btn:hover { border-color: white; color: white; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Halaman Utama -->
+        <div id="home-page" class="page active">
+            <div class="glass-card">
+                <img src="IMG_20260503_094722_550.webp" class="profile-img" alt="Alif">
+                <h1 style="text-align: center; margin-bottom: 5px;">Maslip</h1>
+                <p style="text-align: center; color: #94a3b8; margin-bottom: 25px;">Game Developer Hub</p>
+                
+                <div class="socials">
+                    <a href="https://tiktok.com/@akunmu" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://instagram.com/akunmu" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+
+                <button class="btn-game" onclick="openGame('Block Blast Mania')">🎮 Block Blast Mania</button>
+                <button class="btn-game" onclick="openGame('Tebak Angka Jitu')">🔢 Tebak Angka Jitu</button>
+                <button class="btn-game" onclick="openGame('Gunting Batu Pro')">✂️ Gunting Batu Pro</button>
+                <button class="btn-game" onclick="openGame('Snake Kilat')">🐍 Snake Kilat</button>
+            </div>
+        </div>
+
+        <!-- Halaman Game (Dynamic) -->
+        <div id="game-page" class="page">
+            <div class="glass-card">
+                <h2 id="game-title" style="font-size: 2rem; margin-bottom: 20px;">Game Name</h2>
+                <div style="height: 250px; background: rgba(0,0,0,0.3); border-radius: 25px; display: flex; align-items: center; justify-content: center; border: 2px dashed rgba(255,255,255,0.1);">
+                    <p>Area Gameplay</p>
+                </div>
+                <button class="back-btn" onclick="goHome()">← Kembali ke Menu</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function openGame(name) {
+            document.getElementById('game-title').innerText = name;
+            document.getElementById('home-page').classList.remove('active');
+            document.getElementById('game-page').classList.add('active');
+        }
+
+        function goHome() {
+            document.getElementById('game-page').classList.remove('active');
+            document.getElementById('home-page').classList.add('active');
+        }
+    </script>
+</body>
+</html>
